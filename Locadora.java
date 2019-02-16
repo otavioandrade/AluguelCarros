@@ -3,28 +3,53 @@ import java.util.ArrayList;
 public class Locadora
 {
     private String nomeLocadora;
-    private ArrayList<Carro> carrosDisponiveis;
+    private TipoDoCarro categoria;
+    private ArrayList<String> carrosDisponiveis;
     private double precoPremFds;
     private double precoPremDiaSemana;
     private double precoNormFds;
     private double precoNormDiaSemana;
 
 
-    public Locadora (String nomeLocadora, double precoNormDiaSemana, double precoNormFds, double precoPremDiaSemana, double precoPremFds)
+    public Locadora (String nomeLocadora, TipoDoCarro tipo, double precoNormDiaSemana, double precoNormFds, double precoPremDiaSemana, double precoPremFds)
     {
-        this.carrosDisponiveis = new ArrayList<Carro>();
+        this.nomeLocadora = nomeLocadora;
+        this.categoria = tipo;
+        this.precoNormDiaSemana = precoNormDiaSemana;
+        this.precoNormFds = precoNormFds;
+        this.precoPremDiaSemana = precoPremDiaSemana;
+        this.precoPremFds = precoPremFds;
+        this.carrosDisponiveis = new ArrayList<String>();
     }
 
-    public void addCarro(Carro carro)
+    public void addCarro(String nomeDoCarro)
     {
-        carrosDisponiveis.add(carro);
+        carrosDisponiveis.add(nomeDoCarro);
     }
 
-    public Double valorAluguel()
+    public Double valorTotalAluguel(int numDiaSemana, int numFds, boolean ehPremium)
     {
-        
-    } 
+        if(ehPremium)
+        {
+            return (numDiaSemana*precoPremDiaSemana)+(numFds*precoPremFds);
+        }
+        else
+        {
+            return (numDiaSemana*precoNormDiaSemana)+(numFds*precoNormFds);
+        }
+    }
 
+    public int getNumMaxPassageiro()
+    {
+        return categoria.getNumMaxPassageiro();
+    }
 
+    /**
+     * @return the nomeLocadora
+     */
+    public String getNomeLocadora()
+    {
+        return nomeLocadora;
+    }
 
 }

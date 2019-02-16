@@ -1,14 +1,26 @@
+
+import java.util.Arrays;
+import java.util.Scanner;
+import java.util.ArrayList;
+
 public class Teste
 {
     public static void main(String[] args)
     {
-        Locadora loc1 = new Locadora("WestCar", 100.00f, 100.00f, 100.00f, 100.00f);
-        Carro car1 = new Carro(4, "teste", "teste");
+        
+        Buscador novoBuscador = new Buscador("normal:5:16mar2009(seg),17mar2009(ter),18mar2009(sab)");
+        App novoApp = new App();
+        novoApp.executar();
+        novoApp.realizarBusca(novoBuscador);
 
-        loc1.addCarro(car1);
+
+        //Scanner entraDados = new Scanner(System.in);
+
+                      
+        //String buscaCarros = "premium:4:16mar2009(seg),17mar2009(ter),18mar2009(qua)";
 
 
-        System.out.println(loc1);
+        
 
 
     }
