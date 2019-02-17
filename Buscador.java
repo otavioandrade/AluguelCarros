@@ -9,9 +9,9 @@ public class Buscador
     private int numDiasSemana;
     private int numFds;
 
+
     public Buscador(String novaBuscaString)
     {
-
         String array1[] = novaBuscaString.split(":");
         this.tipoCliente = ehPremium(array1[0]);
         this.numLugar = Integer.parseInt(array1[1]);

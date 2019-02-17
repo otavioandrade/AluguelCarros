@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class App
 {
@@ -29,7 +30,7 @@ public class App
             }
         }
 
-        System.out.println(tempLoc.get(0).getNomeLocadora());
+        System.out.println(tempLoc.get(0).getNomeLocadora() + ":" + tempLoc.get(0).getCarrosDisponiveis());
 
     }
 
@@ -38,24 +39,38 @@ public class App
         System.out.println();
     }
 
-    public void executar()
+
+    //Inicializa as locadoras de carros com os seus devidos preços, e adiciona os carros disponíveis
+    private void inicializar()
     {
         TipoDoCarro suv = new TipoDoCarro("SUV", 7);
         TipoDoCarro esportivo = new TipoDoCarro("Esportivo", 2);
         TipoDoCarro compacto = new TipoDoCarro("compacto", 4);
 
-        Locadora loc1 = new Locadora("SouthCar", compacto, 210.00d, 200.00d, 150.00d, 90.00d);
-        Locadora loc2 = new Locadora("WestCar", esportivo, 530.00d, 200.00d, 150.00d, 90.00d);
-        Locadora loc3 = new Locadora("NorthCar", suv, 630.00d, 600.00d, 580.00d, 590.00d);
+        Locadora southLoc = new Locadora("SouthCar", compacto, 210.00d, 200.00d, 150.00d, 90.00d);
+        Locadora westLoc = new Locadora("WestCar", esportivo, 530.00d, 200.00d, 150.00d, 90.00d);
+        Locadora northLoc = new Locadora("NorthCar", suv, 630.00d, 600.00d, 580.00d, 590.00d);
 
-        loc1.addCarro("Uno");
-        loc2.addCarro("Ferrari");
-        loc3.addCarro("EcoSport");
+        southLoc.addCarro("Uno");
+        westLoc.addCarro("Ferrari");
+        northLoc.addCarro("EcoSport");
+        northLoc.addCarro("EcoSport2");
 
-        locadorasDisponiveis.add(loc1);
-        locadorasDisponiveis.add(loc2);
-        locadorasDisponiveis.add(loc3);
+        locadorasDisponiveis.add(southLoc);
+        locadorasDisponiveis.add(westLoc);
+        locadorasDisponiveis.add(northLoc);
     }
 
+    public void executar()
+    {
+        inicializar();
+               
+        System.out.println("Digite os dados para buscar: ");
+        Scanner entraDados = new Scanner(System.in);
+        String buscaCarros = entraDados.nextLine();
+
+        realizarBusca(new Buscador(buscaCarros));
+
+    }
 
 }

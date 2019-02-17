@@ -39,6 +39,16 @@ public class Locadora
         }
     }
 
+    public String getCarrosDisponiveis()
+    {
+        String tempString = "";
+        for (String str : carrosDisponiveis)
+        {
+            tempString = tempString+str+" ";
+        }
+        return tempString;
+    }
+
     public int getNumMaxPassageiro()
     {
         return categoria.getNumMaxPassageiro();
