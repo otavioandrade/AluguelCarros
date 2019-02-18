@@ -27,6 +27,8 @@ public class Buscador
         else return false;
     }
 
+
+    
     private void defineNumDias(String dataString)
     {
         ArrayList<String> matchlist = new ArrayList<>();

@@ -6,8 +6,6 @@ public class AluguelDeCarros
         
         App novoApp = new App();
         novoApp.executar();
-
-
-        // "normal:5:16mar2009(seg),17mar2009(ter),18mar2009(sab)" 
+        
     }
 }

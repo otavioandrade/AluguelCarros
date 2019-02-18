@@ -66,18 +66,17 @@ public class App
         Scanner entraOpcao = new Scanner(System.in);
         Scanner entraDados = new Scanner(System.in);
         String opcao = null;
+        String dados = null;
 
         do
         {
-            System.out.println("Digite <a> para nova busca ou <q> para sair.");
-            opcao = entraOpcao.nextLine();
+            System.out.println("Digite os dados para fazer a busca ou <q> para sair.");
+            dados = entraDados.nextLine();
 
-            if (opcao.equals("a"))
+            if (!dados.equals("q"))
             {
-                System.out.println("Digite os dados para buscar: ");
-                realizarBusca(new Buscador(entraDados.nextLine()));
+                realizarBusca(new Buscador(dados));
             }
-
-        }while(!opcao.equals("q"));
+        }while(!dados.equals("q"));
     }
 }
