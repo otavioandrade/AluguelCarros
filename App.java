@@ -11,7 +11,7 @@ public class App
         locadorasDisponiveis = new ArrayList<>();
     }
 
-
+    //
     public void realizarBusca (Buscador dadosBuscador)
     {
         double tempValor = 99999999.00d;
@@ -20,16 +20,14 @@ public class App
         {
             if (dadosBuscador.getNumLugar() <= loc.getNumMaxPassageiro())
             {
-                //System.out.println("entrou 1");
                 if (loc.valorTotalAluguel(dadosBuscador.getNumDiasSemana(), dadosBuscador.getNumFds(), dadosBuscador.getTipoCliente()) < tempValor)
                 {
-                    System.out.println(loc.valorTotalAluguel(dadosBuscador.getNumDiasSemana(), dadosBuscador.getNumFds(), dadosBuscador.getTipoCliente()));
                     tempValor = loc.valorTotalAluguel(dadosBuscador.getNumDiasSemana(), dadosBuscador.getNumFds(), dadosBuscador.getTipoCliente());
                     tempLoc.add(0, loc);
                 }
             }
         }
-
+        
         System.out.println(tempLoc.get(0).getNomeLocadora() + ":" + tempLoc.get(0).getCarrosDisponiveis());
 
     }
@@ -48,10 +46,11 @@ public class App
         TipoDoCarro compacto = new TipoDoCarro("compacto", 4);
 
         Locadora southLoc = new Locadora("SouthCar", compacto, 210.00d, 200.00d, 150.00d, 90.00d);
-        Locadora westLoc = new Locadora("WestCar", esportivo, 530.00d, 200.00d, 150.00d, 90.00d);
+        Locadora westLoc = new Locadora("WestCar", esportivo, 530.00d, 220.00d, 150.00d, 90.00d);
         Locadora northLoc = new Locadora("NorthCar", suv, 630.00d, 600.00d, 580.00d, 590.00d);
 
         southLoc.addCarro("Uno");
+        southLoc.addCarro("Palio");
         westLoc.addCarro("Ferrari");
         northLoc.addCarro("EcoSport");
         northLoc.addCarro("EcoSport2");
@@ -64,13 +63,21 @@ public class App
     public void executar()
     {
         inicializar();
-               
-        System.out.println("Digite os dados para buscar: ");
+        Scanner entraOpcao = new Scanner(System.in);
         Scanner entraDados = new Scanner(System.in);
-        String buscaCarros = entraDados.nextLine();
+        String opcao = null;
 
-        realizarBusca(new Buscador(buscaCarros));
+        do
+        {
+            System.out.println("Digite <a> para nova busca ou <q> para sair.");
+            opcao = entraOpcao.nextLine();
 
+            if (opcao.equals("a"))
+            {
+                System.out.println("Digite os dados para buscar: ");
+                realizarBusca(new Buscador(entraDados.nextLine()));
+            }
+
+        }while(!opcao.equals("q"));
     }
-
 }

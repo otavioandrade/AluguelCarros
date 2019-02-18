@@ -54,9 +54,7 @@ public class Locadora
         return categoria.getNumMaxPassageiro();
     }
 
-    /**
-     * @return the nomeLocadora
-     */
+
     public String getNomeLocadora()
     {
         return nomeLocadora;
